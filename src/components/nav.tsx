@@ -18,6 +18,7 @@ function Nav() {
   const { data } = useAppSelector((state) => state.task);
 
   useEffect(() => {
+    // loading tasks from local storage to redux on first page load
     if (data) {
       const active = data?.filter((t) => t.category === "active").length;
       const completed = data.length - active;

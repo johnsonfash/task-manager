@@ -20,6 +20,7 @@ function EditTask() {
   }, [modal]);
 
   useEffect(() => {
+    // This checks if id paramter is available, else, its a new task
     const id = (searchParams.get("id") as any) * 1;
     if (id) {
       const task = data?.find((task) => task.id === id);
