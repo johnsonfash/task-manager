@@ -42,7 +42,7 @@ export const getDBTask = (type: 'all' | 'active' | 'completed') => {
 }
 
 export const findTask = (text: string, data: TaskProp[] | null) => {
-  return data?.filter(t => t.category.includes(text) || t.title.includes(text) || t.description.includes(text)) || []
+  return data?.filter(t => t.category.toLowerCase().includes(text) || t.title.toLowerCase().includes(text) || t.description.toLowerCase().includes(text)) || []
 }
 
 export const findDBTask = (text: string) => {

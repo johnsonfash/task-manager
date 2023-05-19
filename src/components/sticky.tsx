@@ -22,7 +22,7 @@ function Sticky() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     const { searchText } = FormHandler(e, ["searchText"]);
     if (searchText) {
-      setSearchValues(findTask(searchText, data));
+      setSearchValues(findTask(searchText.toLowerCase(), data));
     } else {
       setSearchValues(null);
     }
