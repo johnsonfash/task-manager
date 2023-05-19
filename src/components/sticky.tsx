@@ -91,7 +91,7 @@ function Sticky() {
                     key={i}
                     className="py-2 d-block text-dark border-bottom nav-link-hover"
                   >
-                    <h5 className="my-0">{task.title}</h5>
+                    <h5 className="my-0 one-line">{task.title}</h5>
                     <p className="one-line mt-0 mb-1">
                       {html(task.description)}
                     </p>

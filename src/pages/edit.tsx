@@ -53,7 +53,7 @@ function EditTask() {
             required
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            minLength={10}
+            minLength={5}
             placeholder="Title of task here..."
             className="form-control py-2"
           />

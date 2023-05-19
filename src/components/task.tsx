@@ -57,10 +57,10 @@ function Task({
             className="text-dark d-block"
             title="click to view"
           >
-            <h5 className="lh-1">{task.title}</h5>
-            <div className="two-lines">{html(task.description)}</div>
+            <h5 className="lh-1 one-line">{task.title}</h5>
+            <div className="one-line">{html(task.description)}</div>
           </Link>
-          <div className="d-flex justify-content-between align-items-center">
+          <div className="d-flex mt-2 justify-content-between align-items-center">
             <div>
               <small>
                 <em>{task.date}</em>

@@ -25,7 +25,7 @@ export const accountSlice = createSlice({
         title, description,
         date: newDate(),
         category: 'active',
-        id: state.data?.length || 1
+        id: state.data ? state.data.length + 1 : 1
       }
       state.data = state.data?.concat(task) || [task]
       saveDBTask(state.data)
