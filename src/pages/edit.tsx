@@ -1,17 +1,23 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState, useCallback } from "react";
 import ReactQuill from "react-quill";
-import { Spinner } from "reactstrap";
+import { Link } from "react-router-dom";
+import { Spinner, Modal } from "reactstrap";
 import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "../store";
 import { addToTasks, editATask } from "../store/states/task";
 import { useSearchParams } from "react-router-dom";
 
 function EditTask() {
+  const [modal, setModal] = useState(false);
   const [description, setDescription] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const { loading, data } = useAppSelector((state) => state.task);
   const [searchParams] = useSearchParams();
   const dispatch = useAppDispatch();
+
+  const toggle = useCallback(() => {
+    setModal(!modal);
+  }, [modal]);
 
   useEffect(() => {
     const id = (searchParams.get("id") as any) * 1;
@@ -40,6 +46,7 @@ function EditTask() {
       setDescription("");
       setTitle("");
     }
+    toggle();
   };
 
   return (
@@ -78,6 +85,19 @@ function EditTask() {
           </button>
         </div>
       </form>
+      <Modal isOpen={modal} toggle={toggle} centered>
+        <div className="p-3 text-center">
+          <h5 className="border-bottom pb-3">Whats Next?</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <Link to="/" className="btn btn-light w-100 border me-1">
+              Go Home
+            </Link>
+            <button onClick={toggle} className="btn btn-light border w-100">
+              Continue
+            </button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import {
   faEllipsis,
   faEye,
   faPen,
+  faBolt,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -40,8 +41,8 @@ function Task({
     }
   }, [category, data]);
 
-  const setTaskToCompleted = (id: number) => {
-    dispatch(completedATask(id));
+  const setTaskToStatus = (id: number, status: "active" | "completed") => {
+    dispatch(completedATask({ id, status }));
   };
 
   const deleteTask = (id: number) => {
@@ -96,17 +97,22 @@ function Task({
                       Edit
                     </Link>
                   </DropdownItem>
-                  {task.category === "active" ? (
-                    <DropdownItem
-                      onClick={() => setTaskToCompleted(task.id)}
-                      className="text-success"
-                    >
-                      <span className="d-inline-block icon">
-                        <FontAwesomeIcon icon={faCheck} />
-                      </span>
-                      Completed
-                    </DropdownItem>
-                  ) : null}
+                  <DropdownItem
+                    onClick={() =>
+                      setTaskToStatus(
+                        task.id,
+                        task.category === "completed" ? "active" : "completed"
+                      )
+                    }
+                    className="text-success"
+                  >
+                    <span className="d-inline-block icon">
+                      <FontAwesomeIcon
+                        icon={task.category === "completed" ? faBolt : faCheck}
+                      />
+                    </span>
+                    {task.category === "completed" ? "Active" : "Completed"}
+                  </DropdownItem>
                   <DropdownItem
                     onClick={() => deleteTask(task.id)}
                     className="text-danger"

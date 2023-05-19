@@ -46,11 +46,11 @@ export const accountSlice = createSlice({
         saveDBTask(state.data ?? [])
       }
     },
-    completedATask: (state: TaskState, action: PayloadAction<number>) => {
-      const taskPosition = state.data?.findIndex(task => task.id === action.payload) ?? -1
+    completedATask: (state: TaskState, action: PayloadAction<{ id: number, status: 'active' | 'completed' }>) => {
+      const taskPosition = state.data?.findIndex(task => task.id === action.payload.id) ?? -1
       if (taskPosition > -1) {
         const stateCopy = state.data
-        stateCopy?.splice(taskPosition, 1, { ...stateCopy[taskPosition], category: 'completed' }) || []
+        stateCopy?.splice(taskPosition, 1, { ...stateCopy[taskPosition], category: action.payload.status }) || []
         state.data = stateCopy
         saveDBTask(state.data ?? [])
       }
