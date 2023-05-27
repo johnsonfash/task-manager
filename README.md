@@ -1,4 +1,4 @@
-# task-manager
+# Task Manager (tribesquare)
 `https://task-manager-lake.vercel.app/`
 
 ## Local Setup
