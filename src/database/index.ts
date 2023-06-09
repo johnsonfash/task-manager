@@ -20,10 +20,7 @@ const setDB = (name: string, data: any) => {
   }
 }
 
-const getDB = (name: string): TaskProp[] => JSON.parse(localStorage.getItem(name) as string) || [];
-
-const clearDB = (name: string) => window.localStorage.removeItem(name)
-
+const getDB = (name: string): TaskProp[] => JSON.parse(localStorage.getItem(name) as string) ?? [];
 
 export const newDate = () => {
   const d = new Date();
@@ -42,7 +39,7 @@ export const getDBTask = (type: 'all' | 'active' | 'completed') => {
 }
 
 export const findTask = (text: string, data: TaskProp[] | null) => {
-  return data?.filter(t => t.category.toLowerCase().includes(text) || t.title.toLowerCase().includes(text) || t.description.toLowerCase().includes(text)) || []
+  return data?.filter(t => t.category.toLowerCase().includes(text) || t.title.toLowerCase().includes(text) || t.description.toLowerCase().includes(text)) ?? []
 }
 
 export const findDBTask = (text: string) => {

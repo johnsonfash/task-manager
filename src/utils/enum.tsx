@@ -1,5 +1,5 @@
 const ENUM = Object.freeze({
-  BASE_URL: "http://localhost:5000",
+  BASE_URL: "http://localhost:3000",
   DB_NAME: "tribesquare-tasks",
 });
 

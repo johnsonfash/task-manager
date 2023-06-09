@@ -11,18 +11,17 @@ import { useAppSelector } from "../store";
 
 function Nav() {
   const [stat, setStat] = useState({
-    all: 0,
     completed: 0,
     active: 0,
   });
   const { data } = useAppSelector((state) => state.task);
 
   useEffect(() => {
-    // loading tasks from local storage to redux on first page load
+    // loading tasks from redux when task changes state
     if (data) {
-      const active = data?.filter((t) => t.category === "active").length;
+      const active = data.filter((t) => t.category === "active").length;
       const completed = data.length - active;
-      setStat({ active, completed, all: data.length });
+      setStat({ active, completed });
     }
   }, [data]);
 
@@ -48,13 +47,12 @@ function Nav() {
             <FontAwesomeIcon icon={faListCheck} />
           </span>
           <span className="d-none d-md-inline-block me-1">All Tasks</span>
-          <span>({stat.all})</span>
+          <span>({stat.active + stat.completed})</span>
         </NavLink>
         <NavLink
           to="/active"
           className={({ isActive }) =>
-            `d-block p-2 my-md-2 nav-link nav-link-hover ${
-              isActive ? "active" : ""
+            `d-block p-2 my-md-2 nav-link nav-link-hover ${isActive ? "active" : ""
             }`
           }
         >

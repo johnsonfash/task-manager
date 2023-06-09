@@ -13,7 +13,7 @@ function ViewTask() {
     if (data && Number(id)) {
       setTask(data.find((task) => task.id == Number(id)));
     }
-  }, [data]);
+  }, [data, id]);
 
   return (
     <div className="pb-5 pb-md-0">

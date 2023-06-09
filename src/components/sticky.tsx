@@ -34,9 +34,9 @@ function Sticky() {
   };
 
   return (
-    <div className="sticky-top bg-white px-4 py-3 border-bottom shadow-sm">
+    <div className="sticky-top bg-white px-2 py-2 px-md-4 py-md-3 border-bottom shadow-sm">
       <div className="d-flex justify-content-between align-items-center">
-        <Link to="/" className="text-dark d-block h2">
+        <Link to="/" className="text-dark d-block h2 my-0">
           Task Manager
         </Link>
         <button className="btn btn-ligh btn-outline-secondary" onClick={toggle}>
@@ -86,10 +86,9 @@ function Sticky() {
               ) : searchValues?.length ? (
                 searchValues?.map((task, i) => (
                   <div
-                    // to={`/task/${task.id}`}
                     onClick={() => routeTo(task.id)}
                     key={i}
-                    className="py-2 d-block text-dark border-bottom nav-link-hover"
+                    className="py-2 pointer d-block text-dark border-bottom nav-link-hover"
                   >
                     <h5 className="my-0 one-line">{task.title}</h5>
                     <p className="one-line mt-0 mb-1">

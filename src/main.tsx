@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import Router from "./routes";
 import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { store } from "./store";
 import "./styles/bootstrap.css";
+import "react-quill/dist/quill.snow.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles/globals.css";
-import "react-quill/dist/quill.snow.css";
-import { ToastContainer } from "react-toastify";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.Fragment>

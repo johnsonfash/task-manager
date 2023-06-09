@@ -12,15 +12,15 @@ function Dashboard() {
   }, []);
 
   return (
-    <div>
+    <main>
       <Nav />
       <div className="main-content position-relative">
         <Sticky />
-        <div className="p-4">
+        <div className="py-4 px-2 p-md-4">
           <Outlet />
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
